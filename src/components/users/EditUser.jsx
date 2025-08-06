@@ -194,7 +194,7 @@ const EditUser = ({initialData}) => {
             >
               Vehicle
             </label>
-            <div className="bg-base-200 transition-all duration-200 backdrop-blur-sm shadow-lg shadow-dark/10   w-full border border-base-100/5 rounded-lg">
+            <div className="bg-base-200 transition-all duration-200 backdrop-blur-sm shadow-lg shadow-dark/10   w-full border border-base-100 rounded-lg">
               <CustomSelect
                 name="vehicle"
                 options={mockVehicles}

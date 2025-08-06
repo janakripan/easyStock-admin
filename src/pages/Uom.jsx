@@ -51,7 +51,7 @@ const Uom = () => {
           addOpen ? "flex" : "hidden"
         }`}
       >
-        <div className="w-full max-w-screen-lg mx-auto   flex flex-col items-center justify-center backdrop-blur-2xl  bg-base-300/40 rounded-lg drop-shadow-2xl  drop-shadow-white/10 border-2 border-white/10 p-4">
+        <div className="w-full max-w-screen-lg mx-auto   flex flex-col items-center justify-center backdrop-blur-2xl  bg-base-200/20 rounded-lg drop-shadow-2xl  drop-shadow-white/10 border-2 border-white/10 p-4">
           <div className="w-full h-fit flex justify-end">
             <button
               onClick={() => setAddOpen(false)}
@@ -71,7 +71,7 @@ const Uom = () => {
 
       {editOpen && (
         <div className="absolute inset-0 bg-base-100/40 backdrop-blur-md z-50 h-full flex flex-col items-center justify-center p-2 overflow-y-auto">
-          <div className="w-full max-w-screen-lg mx-auto flex flex-col items-center justify-center backdrop-blur-2xl bg-base-300/40 rounded-lg drop-shadow-2xl border-2 border-white/10 p-4">
+          <div className="w-full max-w-screen-lg mx-auto flex flex-col items-center justify-center backdrop-blur-2xl bg-base-200/20 rounded-lg drop-shadow-2xl drop-shadow-white/10 border-2 border-white/10 p-4">
             <div className="w-full h-fit flex justify-end">
               <button
                 onClick={() => setEditOpen(false)}

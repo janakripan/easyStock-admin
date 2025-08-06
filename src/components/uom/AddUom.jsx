@@ -29,13 +29,13 @@ const AddUom = () => {
             >
               Unit Name <span className="text-red-500 font-semibold"> *</span>
             </label>
-            <div className="bg-base-100/10 backdrop-blur-sm shadow-lg shadow-dark/10  p-2 border border-base-100/5 w-full rounded-lg">
+            <div className="bg-base-200 backdrop-blur-sm shadow-lg shadow-dark/10  p-2 border border-base-100 w-full rounded-lg">
               <div className="w-full flex flex-row items-center ">
                 <Field
                   name="name"
                   type="text"
                   placeholder="Name"
-                  className="w-full  px-2 py-2 rounded-md focus:outline-none placeholder:text-neutral/40 "
+                  className="w-full  px-2 py-2 rounded-md focus:outline-none placeholder:text-secondary-content/80 "
                 />
               </div>
               <ErrorMessage
@@ -52,14 +52,14 @@ const AddUom = () => {
             >
               description
             </label>
-            <div className="bg-base-100/10 backdrop-blur-sm shadow-lg shadow-dark/10  p-2 border border-base-100/5 w-full rounded-lg">
+            <div className="bg-base-200 backdrop-blur-sm shadow-lg shadow-dark/10  p-2 border border-base-100 w-full rounded-lg">
               <div className="w-full flex flex-row items-center ">
                 <Field
                   as="textarea"
                   name="description"
                   placeholder="unit description"
                   rows={5}
-                  className="w-full  px-2 py-2 rounded-md focus:outline-none placeholder:text-neutral/40 "
+                  className="w-full  px-2 py-2 rounded-md focus:outline-none placeholder:text-secondary-content/80 "
                 />
               </div>
               <ErrorMessage

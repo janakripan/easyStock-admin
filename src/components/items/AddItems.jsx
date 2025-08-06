@@ -30,9 +30,9 @@ const AddItems = () => {
       >
         {({ isSubmitting }) => (
           <Form className="space-y-4 w-full mx-auto  flex flex-col">
-            <div className="w-full  h-fit gap-4 flex flex-col lg:flex-row items-center">
-              {/* input fields */}
-              <div className="w-full h-fit max-w-xl  space-y-4">
+            <div className="w-full  h-fit gap-4 flex flex-col lg:flex-row items-start">
+              {/* left side input fields */}
+              <div className="w-full h-fit max-w-xl  space-y-5">
                 {/* name*/}
                 <label
                   htmlFor="name"
@@ -130,6 +130,14 @@ const AddItems = () => {
                 </div>
 
 
+
+
+              </div>
+
+            {/* right side input fields */}
+             <div className="w-full h-fit max-w-xl  space-y-4">
+
+              
                  {/* uom select dropdown */}
                 <label
                   htmlFor="uom"
@@ -179,15 +187,15 @@ const AddItems = () => {
                 </div>
 
 
-              </div>
-
-              {/* drag and drop images */}
+               {/* drag and drop images */}
               <div className="h-full  flex flex-col justify-center">
+                
                 <label className="block mb-1 font-medium text-text/40">
                   Upload Image
                 </label>
                 <ImageDropzone name="image" />
               </div>
+             </div>
             </div>
 
             {/* submit button */}

@@ -47,7 +47,7 @@ const Items = () => {
 
       {/* add item modal */}
       <div
-        className={`absolute inset-0 bg-base-100/40 backdrop-blur-md z-50  flex flex-col items-center p-2 overflow-y-auto  ${
+        className={`absolute inset-0 bg-base-100/40 backdrop-blur-md z-50  flex flex-col items-center lg:justify-center p-2 overflow-y-auto  ${
           addOpen ? "flex" : "hidden"
         }`}
       >
@@ -70,7 +70,7 @@ const Items = () => {
       </div>
 
       {editOpen && (
-        <div className="absolute inset-0 bg-bgPrimary/40 backdrop-blur-md z-50 h-full flex flex-col items-center p-2 overflow-y-auto">
+        <div className="absolute inset-0 bg-bgPrimary/40 backdrop-blur-md z-50 h-full flex flex-col items-center lg:justify-center p-2 overflow-y-auto">
           <div className="w-full max-w-screen-lg mx-auto   flex flex-col items-center justify-center backdrop-blur-2xl  bg-base-100/40 rounded-lg drop-shadow-2xl  drop-shadow-white/10 border-2 border-white/10 p-4">
             <div className="w-full h-fit flex justify-end">
               <button

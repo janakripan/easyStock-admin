@@ -5,14 +5,14 @@ import ImageDropzone from "../shared/ImageDropzone";
 import { mockCategories, mockUOM } from "../../constants/mockdata";
 import CustomSelect from "../shared/CustomSelect";
 
-const EditItems = ({initialData}) => {
+const EditItems = ({ initialData }) => {
   const initialValues = {
     name: initialData.name || "",
-    barcode:initialData.barcode || "",
-    category:initialData.category || "",
-    tax:initialData.tax || "",
-    uom:initialData.uom || "",
-    price:initialData.price || "",
+    barcode: initialData.barcode || "",
+    category: initialData.category || "",
+    tax: initialData.tax || "",
+    uom: initialData.uom || "",
+    price: initialData.price || "",
     image: null,
   };
 
@@ -28,11 +28,11 @@ const EditItems = ({initialData}) => {
         validationSchema={addItemsValidation}
         onSubmit={(values, actions) => handleSubmit(values, actions)}
       >
-       {({ isSubmitting }) => (
+        {({ isSubmitting }) => (
           <Form className="space-y-4 w-full mx-auto  flex flex-col">
-            <div className="w-full  h-fit gap-4 flex flex-col lg:flex-row items-center">
-              {/* input fields */}
-              <div className="w-full h-fit max-w-xl  space-y-4">
+            <div className="w-full  h-fit gap-4 flex flex-col lg:flex-row items-start">
+              {/* left side input fields */}
+              <div className="w-full h-fit max-w-xl  space-y-5">
                 {/* name*/}
                 <label
                   htmlFor="name"
@@ -103,18 +103,15 @@ const EditItems = ({initialData}) => {
                   />
                 </div>
 
-
-                 {/* tax*/}
+                {/* tax*/}
                 <label
                   htmlFor="tax"
                   className="block mb-1 font-medium text-text/40"
                 >
-                 Tax 
+                  Tax
                 </label>
                 <div className="bg-base-200 backdrop-blur-sm shadow-lg shadow-black/10  p-2 border border-base-100 w-full rounded-lg">
                   <div className="w-full flex flex-row items-center ">
-                   
-
                     <Field
                       name="tax"
                       type="text"
@@ -128,9 +125,14 @@ const EditItems = ({initialData}) => {
                     className="text-red-500 text-sm"
                   />
                 </div>
+              </div>
 
+              
 
-                 {/* uom select dropdown */}
+              {/* right side input fields */}
+              <div className="w-full h-fit max-w-xl  space-y-4">
+
+                {/* uom select dropdown */}
                 <label
                   htmlFor="uom"
                   className="block mb-1 font-medium text-text/40"
@@ -152,18 +154,15 @@ const EditItems = ({initialData}) => {
                   />
                 </div>
 
-
-                 {/* price*/}
+                {/* price*/}
                 <label
                   htmlFor="tax"
                   className="block mb-1 font-medium capitalize text-text/40"
                 >
-                 price 
+                  price
                 </label>
                 <div className="bg-base-200 backdrop-blur-sm shadow-lg shadow-black/10  p-2 border border-base-100 w-full rounded-lg">
                   <div className="w-full flex flex-row items-center ">
-                   
-
                     <Field
                       name="price"
                       type="text"
@@ -178,15 +177,13 @@ const EditItems = ({initialData}) => {
                   />
                 </div>
 
-
-              </div>
-
-              {/* drag and drop images */}
-              <div className="h-full  flex flex-col justify-center">
-                <label className="block mb-1 font-medium text-text/40">
-                  Upload Image
-                </label>
-                <ImageDropzone name="image" />
+                {/* drag and drop images */}
+                <div className="h-full  flex flex-col justify-center">
+                  <label className="block mb-1 font-medium text-text/40">
+                    Upload Image
+                  </label>
+                  <ImageDropzone name="image" />
+                </div>
               </div>
             </div>
 
