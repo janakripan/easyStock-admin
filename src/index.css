@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import "tailwindcss";
+
+
+@plugin "daisyui/theme" {
+  name: "bumblebee";
+  default: true;
+  --color-primary: #b8860b;
+  --color-primary-content: #b8860b;
+  --color-base-100: #111827;
+  --color-secondary: teal;
+}
+
+@plugin "daisyui/theme" {
+  name: "halloween";
+  default: false;
+  --color-primary: #b8860b;
+   --color-primary-content: #b8860b;
+   --color-base-100 : #121212;
+  --color-secondary: teal;
+}
+
+@plugin "daisyui"{
+  themes: bumblebee --default, halloween --dark;
+}
+
+/* body {
+  @apply transition-all  duration-300;
+}
+
+html {
+  @apply transition-all  duration-300;
+} */
+
+/* @theme {
+  --color-bgPrimary: #121212;
+  --color-primary: #b8860b;
+  --color-text: #ffffff;
+  --color-dark: #000000
+;
+  --font-roboto: "Roboto", "sans-serif";
+} */
+
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
