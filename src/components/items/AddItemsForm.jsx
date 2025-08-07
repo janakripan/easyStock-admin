@@ -41,7 +41,7 @@ const AddItemsForm = () => {
                   Item Name{" "}
                   <span className="text-red-500 font-semibold"> *</span>
                 </label>
-                <div className=" backdrop-blur-sm shadow-lg shadow-black/10  p-2 border border-gray-300 w-full rounded-lg">
+                <div className="   p-2 border border-gray-300 w-full rounded-lg">
                   <div className="w-full flex flex-row items-center ">
                     <Field
                       name="name"
@@ -64,7 +64,7 @@ const AddItemsForm = () => {
                 >
                   Barcode <span className="text-red-500 font-semibold"> *</span>
                 </label>
-                <div className=" backdrop-blur-sm shadow-lg shadow-black/10  p-2 border border-gray-300 w-full rounded-lg">
+                <div className="   p-2 border border-gray-300 w-full rounded-lg">
                   <div className="w-full flex flex-row items-center ">
                     <Field
                       name="barcode"
@@ -88,7 +88,7 @@ const AddItemsForm = () => {
                 >
                   Category
                 </label>
-                <div className=" transition-all duration-200 backdrop-blur-sm shadow-lg shadow-black/10   w-full border border-gray-300 rounded-lg">
+                <div className=" transition-all duration-200    w-full border border-gray-300 rounded-lg">
                   <CustomSelect
                     name="category"
                     options={mockCategories}
@@ -105,7 +105,7 @@ const AddItemsForm = () => {
                 >
                   Tax
                 </label>
-                <div className=" backdrop-blur-sm shadow-lg shadow-black/10  p-2 border border-gray-300 w-full rounded-lg">
+                <div className="   p-2 border border-gray-300 w-full rounded-lg">
                   <div className="w-full flex flex-row items-center ">
                     <Field
                       name="tax"
@@ -131,7 +131,7 @@ const AddItemsForm = () => {
                 >
                   UOM
                 </label>
-                <div className=" transition-all duration-200 backdrop-blur-sm shadow-lg shadow-black/10   w-full border border-gray-300 rounded-lg">
+                <div className=" transition-all duration-200    w-full border border-gray-300 rounded-lg">
                   <CustomSelect
                     name="uom"
                     options={mockUOM}
@@ -148,7 +148,7 @@ const AddItemsForm = () => {
                 >
                   price
                 </label>
-                <div className=" backdrop-blur-sm shadow-lg shadow-black/10  p-2 border border-gray-300 w-full rounded-lg">
+                <div className="   p-2 border border-gray-300 w-full rounded-lg">
                   <div className="w-full flex flex-row items-center ">
                     <Field
                       name="price"

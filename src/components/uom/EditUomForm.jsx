@@ -30,7 +30,7 @@ const EditUomForm = ({ initialData }) => {
               >
                 Unit Name <span className="text-red-500 font-semibold"> *</span>
               </label>
-              <div className=" backdrop-blur-sm shadow-lg shadow-black/10  p-2 border border-gray-300 w-full rounded-lg">
+              <div className="  p-2 border border-gray-300 w-full rounded-lg">
                 <div className="w-full flex flex-row items-center ">
                   <Field
                     name="name"
@@ -49,11 +49,11 @@ const EditUomForm = ({ initialData }) => {
               {/* description*/}
               <label
                 htmlFor="description"
-                className="block mb-1 font-medium capitalize text-text/40"
+                className="block mb-1 font-medium capitalize text-gray-700"
               >
                 description
               </label>
-              <div className=" backdrop-blur-sm shadow-lg shadow-black/10  p-2 border border-gray-300 w-full rounded-lg">
+              <div className="  p-2 border border-gray-300 w-full rounded-lg">
                 <div className="w-full flex flex-row items-center ">
                   <Field
                     as="textarea"

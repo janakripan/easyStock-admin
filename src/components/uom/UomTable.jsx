@@ -117,7 +117,7 @@ const UomTable = () => {
                   >
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
-                        <div className="w-fit h-8 bg-gradient-to-r from-white/3 to-white/7 rounded-full flex items-center justify-center text-gray-800 text-sm font-bold px-2 shadow-lg">
+                        <div className="w-fit h-8 flex items-center justify-center text-gray-800 text-sm font-bold px-2 ">
                           {item.id}
                         </div>
                       </div>
@@ -129,7 +129,7 @@ const UomTable = () => {
                     </td>
 
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="inline-flex px-3 py-1 text-sm font-bold rounded-full shadow-lg bg-black/5 border-white/5 backdrop-blur-xl">
+                      <span className=" text-sm font-semibold ">
                         {item.code}
                       </span>
                     </td>

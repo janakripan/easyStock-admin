@@ -2,11 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import loader from "./assets/images/spinner/Eclipse@1x-1.0s-200px-200px.svg";
 import { lazy, Suspense } from "react";
 import AppProviders from "./utils/AppProvider";
-import Settings from "./pages/Settings";
-import AddUomPage from "./components/uom/AddUomPage";
-import EditUomPage from "./components/uom/EditUomPage";
-import EditUsersPage from "./components/users/EditUsersPage";
-import AddUsersPage from "./components/users/AddUsersPage";
 
 
 function App() {
@@ -21,6 +16,14 @@ function App() {
   const AddItemsPage = lazy(() => import("./components/items/AddItemsPage"));
   const AddCategoriesPage = lazy(() => import("./components/categories/AddCategoriesPage"));
   const EditCategoriesPage = lazy(() => import("./components/categories/EditCategoriesPage"));
+  const Settings = lazy(() => import("./pages/Settings"));
+  const AddUomPage = lazy(() => import("./components/uom/AddUomPage"));
+  const EditUomPage = lazy(() => import("./components/uom/EditUomPage"));
+  const EditUsersPage = lazy(() => import("./components/categories/EditCategoriesPage"));
+  const AddUsersPage = lazy(() => import("./components/users/AddUsersPage"));
+  const EditVehiclesPage = lazy(() => import("./components/vehicles/EditVehiclesPage"));
+  const AddVehiclesPage = lazy(() => import("./components/vehicles/AddVehiclesPage"));
+  
 
   return (
     <>
@@ -61,8 +64,8 @@ function App() {
                 <Route path="users/edit/:editId" element={<EditUsersPage/>} />
 
                 <Route path="Vehicles" element={<Vehicles />} />
-                <Route path="vehicles/create" />
-                <Route path="vehicles/edit/:editId" />
+                <Route path="vehicles/create" element={ <AddVehiclesPage/>} />
+                <Route path="vehicles/edit/:editId" element={ <EditVehiclesPage/>} />
                 <Route path="settings" element={<Settings />} />
               </Route>
             </Routes>

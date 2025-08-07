@@ -35,7 +35,7 @@ const Users = () => {
                     <MdAdd/>
                   </div>
                   <span>
-                    Add unit
+                    Add user
                   </span>
 
                 </button>

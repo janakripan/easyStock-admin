@@ -30,7 +30,7 @@ const AddCategoriesForm = () => {
             >
               Category Name <span className="text-red-500 font-semibold"> *</span>
             </label>
-            <div className=" backdrop-blur-sm shadow-lg shadow-black/10  p-2 border border-gray-300 w-full rounded-lg">
+            <div className=" p-2 border border-gray-300 w-full rounded-lg">
               <div className="w-full flex flex-row items-center ">
                 <Field
                   name="name"

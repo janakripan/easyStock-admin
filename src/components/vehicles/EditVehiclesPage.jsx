@@ -1,24 +1,25 @@
 import React from 'react'
-import EditCategoriesForm from './EditCategoriesForm'
-import { useParams } from 'react-router'
-import { mockCategories } from '../../constants/mockdata'
 import Header from '../dashboardLayout/Header'
+import EditVehicleForm from './EditVehicleForm'
+import { useParams } from 'react-router'
+import { mockVehicles } from '../../constants/mockdata'
 
-const EditCategoriesPage = () => {
+const EditVehiclesPage = () => {
     const {editId} = useParams()
 
-    const initialData = mockCategories.find((cat)=>String(cat.id) === String(editId))
+    const initialData = mockVehicles.find((v) => String(v.id) === String(editId))
+
     console.log(initialData)
   return (
-     <>
+      <>
       <div className="w-full h-screen  flex flex-col  relative ">
-        <Header pageName={" Edit category"}  />
+        <Header pageName={" edit vehicle"}  />
 
         {/* content */}
 
         <div className="w-full h-full min-h-0 overflow-hidden   flex flex-col p-5">
           <h3 className="font-roboto font-semibold text-xl text-gray-800 capitalize pb-6">
-            change category
+            change vehicle
           </h3>
 
           
@@ -27,7 +28,7 @@ const EditCategoriesPage = () => {
           {/* container */}
           <div className="w-full h-full bg-white rounded-xl overflow-hidden flex flex-col   ">
            
-              <EditCategoriesForm initialData={initialData}/>
+              <EditVehicleForm initialData={initialData}/>
            
            
           </div>
@@ -42,4 +43,4 @@ const EditCategoriesPage = () => {
   )
 }
 
-export default EditCategoriesPage
+export default EditVehiclesPage

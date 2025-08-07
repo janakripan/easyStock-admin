@@ -2,12 +2,10 @@ import React, { useEffect, useState } from "react";
 import { mockItems } from "../../constants/mockdata";
 import ExcelJS from "exceljs";
 import { saveAs } from "file-saver";
-
 import { useSearch } from "../../contexts/SearchContext";
-import { FiEdit } from "react-icons/fi";
 import { useNavigate } from "react-router";
 
-const ItemsTable = ({ onEdit }) => {
+const ItemsTable = () => {
   const [displayItems, SetDisplayItems] = useState(mockItems);
   const navigate = useNavigate();
   const { searchQuery } = useSearch();
@@ -117,7 +115,7 @@ const ItemsTable = ({ onEdit }) => {
                   >
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
-                        <div className="w-8 h-8 bg-gradient-to-r from-white/3 to-white/7 rounded-full flex items-center justify-center text-gray-800 text-sm font-bold shadow-lg">
+                        <div className="  flex items-center justify-center text-gray-800 text-sm font-bold ">
                           {item.id}
                         </div>
                       </div>
@@ -138,7 +136,7 @@ const ItemsTable = ({ onEdit }) => {
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="inline-flex px-3 py-1 text-sm font-bold rounded-full shadow-lg bg-black/5 border-white/5 backdrop-blur-xl">
+                      <span className="inline-flex px-3 py-1 text-sm font-bold ">
                         {item.category}
                       </span>
                     </td>
@@ -151,7 +149,7 @@ const ItemsTable = ({ onEdit }) => {
                       />
                     </td>
                   </tr>
-                ))
+                )) 
               )}
             </tbody>
           </table>

@@ -90,7 +90,7 @@ const CustomMultiSelect = ({
     }),
     clearIndicator:  (base, state) => ({
       ...base,
-      color: "var(--color-text)",
+      color: "var(--color-gray-700)",
       transition: "color 0.2s ease",
       ":hover": {
         color: "var(--color-primary)", // or your desired hover color variable

@@ -1,20 +1,14 @@
 import React, { useEffect, useState } from "react";
 import ExcelJS from "exceljs";
 import { saveAs } from "file-saver";
-import ReactPaginate from "react-paginate";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { FaSort, FaSortUp, FaSortDown } from "react-icons/fa";
 import { useSearch } from "../../contexts/SearchContext";
 import { mockUsers } from "../../constants/mockdata";
-import { FiEdit } from "react-icons/fi";
+import { useNavigate } from "react-router";
 
-const UsersTable = ({onEdit}) => {
-  const [sortField, setSortField] = useState("");
-  const [sortDirection, setSortDirection] = useState("asc");
+const UsersTable = () => {
+
   const [displayItems, SetDisplayItems] = useState(mockUsers);
-  const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 10;
-
+  const navigate = useNavigate()
   const { searchQuery } = useSearch();
 
   // search logic
@@ -78,190 +72,89 @@ const UsersTable = ({onEdit}) => {
     saveAs(blob, `user-data-${formattedDate}.xlsx`);
   };
 
-  // Sort data
-  const processedItems = displayItems?.sort((a, b) => {
-    if (!sortField) return 0;
+ 
 
-    const aVal = a[sortField];
-    const bVal = b[sortField];
+   return (
+    <div className="w-full h-full">
+      <div className="bg-black/15 rounded-xl border border-gray-200 h-full flex flex-col overflow-hidden">
+        {/* Table Header */}
+        <div className="overflow-x-auto">
+          <table className="w-full table-fixed">
+            <thead className="bg-gray-200 sticky top-0 z-10">
+              <tr>
+                <th className="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wide">
+                  ID
+                </th>
+                <th className="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wide">
+                  user Name
+                </th>
+                <th className="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wide">
+                  default Customer
+                </th>
+                <th className="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wide">
+                  Category
+                </th>
+                <th className="px-6 py-4 text-center text-sm font-semibold uppercase tracking-wide">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+          </table>
+        </div>
 
-    if (typeof aVal === "string") {
-      return sortDirection === "asc"
-        ? aVal.localeCompare(bVal)
-        : bVal.localeCompare(aVal);
-    }
-
-    return sortDirection === "asc" ? aVal - bVal : bVal - aVal;
-  });
-
-  const handleSort = (field) => {
-    if (sortField === field) {
-      setSortDirection(sortDirection === "asc" ? "desc" : "asc");
-    } else {
-      setSortField(field);
-      setSortDirection("asc");
-    }
-    setCurrentPage(0); // Reset page on sort
-  };
-
-  const getSortIcon = (field) => {
-    if (sortField !== field) return <FaSort />;
-    return sortDirection === "asc" ? <FaSortDown /> : <FaSortUp />;
-  };
-
-  const handleEdit = (item) => {
-    onEdit(item)
-  };
-
-  return (
-    <div className="min-h-screen  p-4 md:p-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Table Container */}
-        <div className="bg-black/5 backdrop-blur-sm rounded-2xl shadow-2xl border border-white/5  shadow-black/40 overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gradient-to-r from-primary/60 via-primary/30 to-primary/60">
+        {/* Table Body */}
+        <div className="overflow-y-auto overflow-x-auto flex-1 hide-scrollbar">
+          <table className="w-full table-fixed">
+            <tbody className="divide-y divide-gray-300">
+              {displayItems.length === 0 ? (
                 <tr>
-                  <th
-                    className="px-6 py-4 text-left text-sm font-semibold  uppercase tracking-wide cursor-pointer hover:bg-white/10 transition-all duration-200 group"
-                    onClick={() => handleSort("id")}
-                  >
-                    <div className="flex items-center">
-                      User ID
-                      {getSortIcon("id")}
-                    </div>
-                  </th>
-                  <th
-                    className="px-6 py-4 text-left text-sm font-semibold  uppercase tracking-wide cursor-pointer hover:bg-white/10 transition-all duration-200"
-                    onClick={() => handleSort("name")}
-                  >
-                    <div className="flex items-center">
-                      User Name
-                      {getSortIcon("name")}
-                    </div>
-                  </th>
-
-                  <th className="px-6 py-4 text-left text-sm font-semibold  uppercase tracking-wide">
-                    Default Customer
-                  </th>
-                  <th
-                    className="px-6 py-4 text-left text-sm font-semibold  uppercase tracking-wide cursor-pointer hover:bg-white/10 transition-all duration-200"
-                    onClick={() => handleSort("category")}
-                  >
-                    <div className="flex items-center">
-                      Categories
-                      {getSortIcon("category")}
-                    </div>
-                  </th>
-                  <th className="px-6 py-4 text-center text-sm font-semibold  uppercase tracking-wide">
-                    Actions
-                  </th>
+                  <td colSpan={6} className="text-center py-10 text-xl">
+                    No items found
+                  </td>
                 </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-700">
-                {processedItems.length === 0 ? (
-                  <tr>
-                    <td
-                      colSpan={6}
-                      className="text-center py-10  text-xl"
-                    >
-                      No items found
+              ) : (
+                displayItems.map((item, index) => (
+                  <tr
+                    key={index}
+                    onClick={() => navigate(`/admin/users/edit/${item.id}`)}
+                    className="odd:bg-gray-100 even:bg-white hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 transition-all duration-300 group"
+                  >
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="flex items-center">
+                        <div className="w-fit  flex items-center justify-center text-gray-800 text-sm font-bold ">
+                          {item.usercode}
+                        </div>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-base text-gray-800 font-semibold group-hover:text-cyan-400 transition-colors">
+                        {item.name}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <span className="text-sm text-gray-800 font-medium">
+                        {item.customer}
+                      </span>
+                    </td>
+                    
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <span className="inline-flex px-3 py-1 text-sm font-normal  ">
+                        {Array.isArray(item.categories) ? item.categories.join(", ") : item.categories}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-center">
+                      <input
+                        type="checkbox"
+                        onClick={(e) => e.stopPropagation()}
+                        defaultChecked
+                        className="toggle toggle-success"
+                      />
                     </td>
                   </tr>
-                ) : (
-                  processedItems
-                    .slice(
-                      currentPage * itemsPerPage,
-                      (currentPage + 1) * itemsPerPage
-                    )
-                    .map((item, index) => (
-                      <tr
-                        key={index}
-                        className="odd:bg-base-100 even:bg-base-200 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 transition-all duration-300 group"
-                      >
-                        {/* your <td> content stays the same */}
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="flex items-center">
-                            <div className="w-fit px-2 h-8 bg-gradient-to-r from-white/3 to-white/7 rounded-full backdrop-blur-lg tracking-wide flex items-center justify-center  text-sm font-bold shadow-lg">
-                              {item.usercode}
-                            </div>
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-lg font-semibold  group-hover:text-cyan-400 transition-colors">
-                            {item.name}
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="flex items-center">
-                            <span className="text-lgfont-semibold bg-clip-text ">
-                              {item.customer}
-                            </span>
-                          </div>
-                        </td>
-
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="flex flex-wrap gap-2">
-                            {item.categories.map((cat, idx) => (
-                              <span
-                                key={idx}
-                                className="inline-flex px-3 py-1 text-sm font-bold rounded-full shadow-md  bg-black/20 border border-white/10 backdrop-blur-md"
-                              >
-                                {cat}
-                              </span>
-                            ))}
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-center">
-                          <div className="flex items-center justify-center space-x-3">
-                            <button
-                              onClick={() => handleEdit(item)}
-                              className="inline-flex items-center px-3 py-2 text-sm font-medium  bg-gradient-to-b from-primary/60 via-primary/30 to-primary/60 hover:bg-primary/50 rounded-lg focus:outline-none  transform hover:scale-105 transition-all duration-200 shadow-lg shadow-black/10"
-                            >
-                              <FiEdit />
-                              Edit
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))
-                )}
-              </tbody>
-            </table>
-          </div>
-
-          {/* Footer */}
-          <div className="bg-gradient-to-r from-primary/60 via-primary/30 to-primary/50 px-6 py-4 border-t border-gray-700">
-            <div className="flex flex-col gap-6 md:flex-row items-center justify-between">
-              <div className="flex justify-center py-">
-                <ReactPaginate
-                  previousLabel={<FiChevronLeft size={20} />}
-                  nextLabel={<FiChevronRight size={20} />}
-                  breakLabel={"..."}
-                  pageCount={Math.ceil(processedItems.length / itemsPerPage)}
-                  marginPagesDisplayed={1}
-                  pageRangeDisplayed={2}
-                  onPageChange={({ selected }) => setCurrentPage(selected)}
-                  containerClassName="flex justify-center gap-2 items-center text-sm font-medium "
-                  pageClassName=""
-                  pageLinkClassName="px-3 py-1 rounded hover:bg-white/10"
-                  activeLinkClassName="bg-primary/75 backdrop-blur-xl  font-bold"
-                  previousLinkClassName="px-3 py-1 rounded hover:bg-white/10"
-                  nextLinkClassName="px-3 py-1 rounded hover:bg-white/10"
-                  disabledLinkClassName="opacity-30 cursor-not-allowed"
-                />
-              </div>
-
-              <div className="flex items-center space-x-2">
-                <button
-                  onClick={() => handleDownloadExcel()}
-                  className=" /70 bg-black/20 hover:scale-105 active:scale-100 active:bg-black/30 backdrop-blur-lg px-3 py-2 rounded-lg border-white/5 border shadow-lg shadow-black/15 transition"
-                >
-                  download excel
-                </button>
-              </div>
-            </div>
-          </div>
+                )) 
+              )}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
