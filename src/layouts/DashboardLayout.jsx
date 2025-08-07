@@ -6,8 +6,8 @@ import { Outlet } from 'react-router'
 const DashboardLayout = () => {
   const {isOpen} = useSidebar()
   return (
-     <div className={`w-full flex flex-col bg-bgPrimary h-screen transition-all duration-300 overflow-y-auto relative
-  ${isOpen?" pl-11 md:pl-[280px]" : "pl-[52px] md:pl-[80px] "}`}>
+     <div className={`w-full flex flex-col bg-gray-100 h-screen transition-all duration-300 overflow-y-auto relative
+  ${isOpen?" pl-11 md:pl-[250px]" : "pl-0 "}`}>
       
     <Sidebar/>
 

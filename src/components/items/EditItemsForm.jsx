@@ -5,14 +5,14 @@ import ImageDropzone from "../shared/ImageDropzone";
 import { mockCategories, mockUOM } from "../../constants/mockdata";
 import CustomSelect from "../shared/CustomSelect";
 
-const AddItems = () => {
+const EditItemsForm = ({ initialData }) => {
   const initialValues = {
-    name: "",
-    barcode: "",
-    category: "",
-    tax: "",
-    uom: "",
-    price: "",
+    name: initialData?.name || "",
+    barcode: initialData?.barcode || "",
+    category: initialData?.category || "",
+    tax: initialData?.tax || "",
+    uom: initialData?.uom || "",
+    price: initialData?.price || "",
     image: null,
   };
 
@@ -36,18 +36,18 @@ const AddItems = () => {
                 {/* name*/}
                 <label
                   htmlFor="name"
-                  className="block mb-1 font-medium text-text/40"
+                  className="block mb-1 font-medium text-gray-700"
                 >
                   Item Name{" "}
                   <span className="text-red-500 font-semibold"> *</span>
                 </label>
-                <div className="bg-base-200 backdrop-blur-sm shadow-lg shadow-black/10  p-2 border border-base-100 w-full rounded-lg">
+                <div className=" backdrop-blur-sm shadow-lg shadow-black/10  p-2 border border-gray-300 w-full rounded-lg">
                   <div className="w-full flex flex-row items-center ">
                     <Field
                       name="name"
                       type="text"
                       placeholder="Name"
-                      className="w-full  px-2 py-2 rounded-md focus:outline-none placeholder:text-secondary-content/80 "
+                      className="w-full  px-2 py-2 rounded-md focus:outline-none placeholder:text-gray-400 "
                     />
                   </div>
                   <ErrorMessage
@@ -60,11 +60,11 @@ const AddItems = () => {
                 {/* Barcode*/}
                 <label
                   htmlFor="barcode"
-                  className="block mb-1 font-medium text-text/40"
+                  className="block mb-1 font-medium text-gray-700"
                 >
                   Barcode <span className="text-red-500 font-semibold"> *</span>
                 </label>
-                <div className="bg-base-200 backdrop-blur-sm shadow-lg shadow-black/10  p-2 border border-base-100 w-full rounded-lg">
+                <div className=" backdrop-blur-sm shadow-lg shadow-black/10  p-2 border border-gray-300 w-full rounded-lg">
                   <div className="w-full flex flex-row items-center ">
                     <Field
                       name="barcode"
@@ -84,11 +84,11 @@ const AddItems = () => {
                 {/* category select dropdown */}
                 <label
                   htmlFor="category"
-                  className="block mb-1 font-medium text-text/40"
+                  className="block mb-1 font-medium text-gray-700"
                 >
                   Category
                 </label>
-                <div className="bg-base-200 transition-all duration-200 backdrop-blur-sm shadow-lg shadow-black/10   w-full border border-base-100 rounded-lg">
+                <div className=" transition-all duration-200 backdrop-blur-sm shadow-lg shadow-black/10   w-full border border-gray-300 rounded-lg">
                   <CustomSelect
                     name="category"
                     options={mockCategories}
@@ -96,30 +96,22 @@ const AddItems = () => {
                     labelKey="name"
                     placeholder="Select a category"
                   />
-                  <ErrorMessage
-                    name="category"
-                    component="div"
-                    className="text-red-500 text-sm"
-                  />
                 </div>
 
-
-                 {/* tax*/}
+                {/* tax*/}
                 <label
                   htmlFor="tax"
-                  className="block mb-1 font-medium text-text/40"
+                  className="block mb-1 font-medium text-gray-700"
                 >
-                 Tax 
+                  Tax
                 </label>
-                <div className="bg-base-200 backdrop-blur-sm shadow-lg shadow-black/10  p-2 border border-base-100 w-full rounded-lg">
+                <div className=" backdrop-blur-sm shadow-lg shadow-black/10  p-2 border border-gray-300 w-full rounded-lg">
                   <div className="w-full flex flex-row items-center ">
-                   
-
                     <Field
                       name="tax"
                       type="text"
                       placeholder="Tax"
-                      className="w-full  px-2 py-2 rounded-md focus:outline-none placeholder:text-secondary-content/80 "
+                      className="w-full  px-2 py-2 rounded-md focus:outline-none placeholder:text-gray-400 "
                     />
                   </div>
                   <ErrorMessage
@@ -128,24 +120,18 @@ const AddItems = () => {
                     className="text-red-500 text-sm"
                   />
                 </div>
-
-
-
-
               </div>
 
-            {/* right side input fields */}
-             <div className="w-full h-fit max-w-xl  space-y-4">
-
-              
-                 {/* uom select dropdown */}
+              {/* right side input fields */}
+              <div className="w-full h-fit max-w-xl  space-y-4">
+                {/* uom select dropdown */}
                 <label
                   htmlFor="uom"
-                  className="block mb-1 font-medium text-text/40"
+                  className="block mb-1 font-medium text-gray-700"
                 >
                   UOM
                 </label>
-                <div className="bg-base-200 transition-all duration-200 backdrop-blur-sm shadow-lg shadow-black/10   w-full border border-base-100 rounded-lg">
+                <div className=" transition-all duration-200 backdrop-blur-sm shadow-lg shadow-black/10   w-full border border-gray-300 rounded-lg">
                   <CustomSelect
                     name="uom"
                     options={mockUOM}
@@ -153,30 +139,22 @@ const AddItems = () => {
                     labelKey="name"
                     placeholder="UOM"
                   />
-                  <ErrorMessage
-                    name="uom"
-                    component="div"
-                    className="text-red-500 text-sm"
-                  />
                 </div>
 
-
-                 {/* price*/}
+                {/* price*/}
                 <label
                   htmlFor="tax"
-                  className="block mb-1 font-medium capitalize text-text/40"
+                  className="block mb-1 font-medium capitalize text-gray-700"
                 >
-                 price 
+                  price
                 </label>
-                <div className="bg-base-200 backdrop-blur-sm shadow-lg shadow-black/10  p-2 border border-base-100 w-full rounded-lg">
+                <div className=" backdrop-blur-sm shadow-lg shadow-black/10  p-2 border border-gray-300 w-full rounded-lg">
                   <div className="w-full flex flex-row items-center ">
-                   
-
                     <Field
                       name="price"
                       type="text"
                       placeholder="price"
-                      className="w-full  px-2 py-2 rounded-md focus:outline-none placeholder:text-secondary-content/80 "
+                      className="w-full  px-2 py-2 rounded-md focus:outline-none placeholder:text-gray-400 "
                     />
                   </div>
                   <ErrorMessage
@@ -186,26 +164,24 @@ const AddItems = () => {
                   />
                 </div>
 
-
-               {/* drag and drop images */}
-              <div className="h-full  flex flex-col justify-center">
-                
-                <label className="block mb-1 font-medium text-text/40">
-                  Upload Image
-                </label>
-                <ImageDropzone name="image" />
+                {/* drag and drop images */}
+                <div className="h-full  flex flex-col justify-center">
+                  <label className="block mb-1 font-medium text-gray-700">
+                    Upload Image
+                  </label>
+                  <ImageDropzone name="image" />
+                </div>
               </div>
-             </div>
             </div>
 
             {/* submit button */}
-            <div className="w-full h-fit flex justify-center items-center">
+            <div className="w-full h-fit flex justify-end items-center">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className=" max-w-xl disabled:cursor-not-allowed cursor-pointer w-full bg-gradient-to-b from-primary/60 via-primary/30 to-primary/60 shadow-black/10  hover:bg-primary/50 hover:text-white active:bg-primary/20 active:scale-95 scale-95 hover:scale-100 transition-all duration-300 px-8 p-3 rounded-lg border border-primary/10 text-xl font-roboto font-semibold"
+                className=" max-w-md disabled:cursor-not-allowed bg-gray-200 cursor-pointer w-full   shadow-black/10  hover:bg-primary hover:text-white active:bg-primary/50 active:scale-95 scale-95 hover:scale-100 transition-all duration-300 px-8 p-3 rounded-lg border border-gray-400 hover:border-primary text-xl font-roboto font-semibold"
               >
-                {isSubmitting ? "Adding..." : "Add Item"}
+                {isSubmitting ? "Saving..." : "Save"}
               </button>
             </div>
           </Form>
@@ -215,4 +191,4 @@ const AddItems = () => {
   );
 };
 
-export default AddItems;
+export default EditItemsForm;

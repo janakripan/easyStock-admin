@@ -3,9 +3,9 @@ import React from "react";
 import { addCategoriesValidation } from "../../validations/addValidations";
 import ImageDropzone from "../shared/ImageDropzone";
 
-const EditCategories = ({initialData}) => {
+const AddCategoriesForm = () => {
   const initialValues = {
-    name:initialData.name || "",
+    name: "",
     image: null,
   };
 
@@ -21,23 +21,22 @@ const EditCategories = ({initialData}) => {
         validationSchema={addCategoriesValidation}
         onSubmit={(values, actions) => handleSubmit(values, actions)}
       >
-       {({ isSubmitting }) => (
+        {({ isSubmitting }) => (
           <Form className="space-y-4 w-full mx-auto max-w-xl  flex flex-col">
             {/* name*/}
             <label
               htmlFor="name"
-              className="block mb-1 font-medium "
+              className="block mb-1 font-medium text-gray-700"
             >
               Category Name <span className="text-red-500 font-semibold"> *</span>
             </label>
-            <div className="bg-base-200 backdrop-blur-sm shadow-lg shadow-black/10  p-2 border border-base-100 w-full rounded-lg">
+            <div className=" backdrop-blur-sm shadow-lg shadow-black/10  p-2 border border-gray-300 w-full rounded-lg">
               <div className="w-full flex flex-row items-center ">
-               
                 <Field
                   name="name"
                   type="text"
                   placeholder="Name"
-                  className="w-full  px-2 py-2 rounded-md focus:outline-none placeholder:secondary-content/80 "
+                  className="w-full  px-2 py-2 rounded-md focus:outline-none placeholder:text-gray-400 "
                 />
               </div>
               <ErrorMessage
@@ -47,22 +46,21 @@ const EditCategories = ({initialData}) => {
               />
             </div>
 
-
             <div className="h-full  flex flex-col justify-center">
-                <label className="block mb-1 font-medium ">
-                  Upload Image
-                </label>
-                <ImageDropzone name="image" />
-              </div>
+              <label className="block mb-1 font-medium text-gray-700 ">
+                Upload Image
+              </label>
+              <ImageDropzone name="image" />
+            </div>
 
-              {/* submit button */}
+            {/* submit button */}
             <div className="w-full h-fit flex justify-center items-center">
-             <button
+              <button
                 type="submit"
                 disabled={isSubmitting}
-                className=" max-w-xl disabled:cursor-not-allowed cursor-pointer w-full bg-gradient-to-b from-primary/60 via-primary/30 to-primary/60 shadow-black/10  hover:bg-primary/50 hover:text-white active:bg-primary/20 active:scale-95 scale-95 hover:scale-100 transition-all duration-300 px-8 p-3 rounded-lg border border-primary/10 text-xl font-roboto font-semibold"
+                className=" max-w-md disabled:cursor-not-allowed bg-gray-200 cursor-pointer w-full   shadow-black/10  hover:bg-primary hover:text-white active:bg-primary/50 active:scale-95 scale-95 hover:scale-100 transition-all duration-300 px-8 p-3 rounded-lg border border-gray-400 hover:border-primary text-xl font-roboto font-semibold"
               >
-                {isSubmitting ? "Saving..." : "Save"}
+                {isSubmitting ? "Adding..." : "Add Category"}
               </button>
             </div>
           </Form>
@@ -72,4 +70,4 @@ const EditCategories = ({initialData}) => {
   );
 };
 
-export default EditCategories;
+export default AddCategoriesForm;

@@ -39,7 +39,7 @@ const CustomMultiSelect = ({
     }),
     menu: (base) => ({
       ...base,
-      backgroundColor: "var(--color-base-200)",
+      backgroundColor: "var(--color-gray-400)",
       borderRadius: "0.375rem",
       marginTop: 4,
       zIndex: 100,
@@ -49,7 +49,7 @@ const CustomMultiSelect = ({
       backgroundColor: state.isFocused
         ? "var(--color-option-hover)"
         : "transparent",
-      color: "var(--color-text)",
+      color: "var(--color-gray-700)",
       cursor: "pointer",
     }),
     multiValue: (base) => ({
@@ -59,11 +59,11 @@ const CustomMultiSelect = ({
     }),
     multiValueLabel: (base) => ({
       ...base,
-      color: "var(--color-text)",
+      color: "var(--color-gray-700)",
     }),
     multiValueRemove: (base) => ({
       ...base,
-      color: "var(--color-text)",
+      color: "var(--color-gray-700)",
       ":hover": {
         backgroundColor: "red",
         color: "white",
@@ -72,17 +72,17 @@ const CustomMultiSelect = ({
     }),
     input: (base) => ({
       ...base,
-      color: "var(--color-text)",
+      color: "var(--color-gray-800)",
       margin: 0,
       padding: 0,
     }),
     placeholder: (base) => ({
       ...base,
-      color: "var(--color-secondary-content)",
+      color: "var(--color-gray-300)",
     }),
     dropdownIndicator: (base, state) => ({
       ...base,
-      color: "var(--color-text)",
+      color: "var(--color-gray-700)",
       transition: "color 0.2s ease",
       ":hover": {
         color: "var(--color-primary)", // or your desired hover color variable

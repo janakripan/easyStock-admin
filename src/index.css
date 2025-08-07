@@ -33,14 +33,14 @@ html {
   @apply transition-all  duration-300;
 } */
 
-/* @theme {
+@theme {
   --color-bgPrimary: #121212;
   --color-primary: #b8860b;
   --color-text: #ffffff;
   --color-dark: #000000
 ;
   --font-roboto: "Roboto", "sans-serif";
-} */
+}
 
 
 .hide-scrollbar::-webkit-scrollbar {

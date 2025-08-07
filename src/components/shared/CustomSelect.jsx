@@ -50,16 +50,16 @@ const CustomSelect = ({
     }),
     placeholder: (base) => ({
       ...base,
-      color: "var(--color-secondary-content)",
+      color: "var(--color-gray-400)",
       opacity:"80%",
     }),
     singleValue: (base) => ({
       ...base,
-      color: "var(--color-text)",
+      color: "var(--color-gray-700)",
     }),
     menu: (base) => ({
       ...base,
-      backgroundColor: "var(--color-base-300)", // dropdown menu background
+      backgroundColor: "var(--color-gray-300)", // dropdown menu background
       borderRadius: "0.375rem",
       marginTop: 4,
       zIndex: 100,
@@ -69,16 +69,16 @@ const CustomSelect = ({
       backgroundColor: state.isFocused
         ? "var(--color-option-hover)"
         : "transparent",
-      color: "var(--color-text)",
+      color: "var(--color-gray-900)",
       cursor: "pointer",
     }),
     dropdownIndicator: (base) => ({
       ...base,
-      color: "var(--color-text)",
+      color: "var(--color-gray-700)",
     }),
     clearIndicator: (base) => ({
       ...base,
-      color: "var(--color-text)",
+      color: "var(--color-gray-700)",
     }),
     indicatorSeparator: (base) => ({
       ...base,

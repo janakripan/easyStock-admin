@@ -1,40 +1,47 @@
 import React from "react";
-import SearchBar from "../shared/Searchbar";
-import { MdOutlineAdd } from "react-icons/md";
-import { useTheme } from "../../contexts/ThemeContext";
-import { FaMoon, FaSun } from "react-icons/fa";
-const Header = ({ pageName, onAddClick }) => {
-  const { theme, toggleTheme } = useTheme();
+import { useSidebar } from "../../contexts/SidebarContext";
+import { HiChevronDoubleRight } from "react-icons/hi";
+const Header = ({ pageName }) => {
+  const { isOpen, setIsOpen } = useSidebar();
   return (
-    <div className="w-full max-w-screen-2xl mx-auto h-fit flex flex-row items-center lg:justify-between justify-center bg-base-100 relative p-4 ">
+    <div className="w-full bg-white  mx-auto h-fit flex flex-row items-center justify-between   relative px-8 p-3 ">
       {/* page name */}
-      <div className="w-fit h-fit ">
-        <h1 className="text-3xl capitalize font-semibold tracking-wider font-roboto ">
+      <div className="w-fit h-fit flex items-center gap-4 ">
+        <div className={`border border-white/5 bg-black/10  backdrop-blur-sm shadow-lg shadow-black/10   rounded-lg ${
+          isOpen ?"hidden":"block"
+        }`}>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className={` cursor-pointer text-base text-gray-800 hover:bg-secondary-content/15 hover:scale-105 flex items-center rounded-lg justify-center p-1 transition-all duration-300 ${
+              isOpen ? "-rotate-180" : "rotate-0"
+            }  `}
+          >
+            <HiChevronDoubleRight />
+          </button>
+        </div>
+        <h1 className="text-2xl text-gray-600 capitalize font-semibold tracking-wider font-roboto ">
           {pageName}
         </h1>
       </div>
 
-      {/* searchbar and right side buttons  */}
-      <div className="hidden lg:flex flex-row items-center gap-x-4 w-fit">
-        <SearchBar />
+      <div className="w-fit h-full flex flex-row items-center gap-2 p-1">
+        <div className=" h-10 aspect-square rounded-full bg-amber flex items-center justify-center border-green-300 border-2 overflow-hidden">
+          <img
+            className="object-cover  object-center"
+            src="https://i.pravatar.cc/150?img=3"
+            alt=" user img"
+          />
+        </div>
+        <div className=" flex h-fit flex-col  justify-between gap-0.5  ">
+          <h6 className="font-medium text-sm capitalize font-roboto tracking-wider text-gray-900">
+            Admin
+          </h6>
 
-        <button
-          onClick={() => onAddClick(true)}
-          className=" cursor-pointer w-fit bg-gradient-to-b from-primary/60 via-primary/30 to-primary/60 backdrop-blur-lg shadow-black/10  hover:bg-primary/50  active:bg-primary/30 active:scale-100 hover:scale-105 transition-all duration-300 px-5 p-3 rounded-lg border border-primary/30 text-base flex flex-row items-center whitespace-nowrap font-roboto font-semibold"
-        >
-          <span className="w-fit text-lg p-0 mr-1">
-            <MdOutlineAdd />{" "}
-          </span>{" "}
-          <span>Add {pageName}</span>
-        </button>
-
-        
+          <span className="font-normal text-gray-600 text-sm capitalize  tracking-wider font-roboto ">
+            Editor
+          </span>
+        </div>
       </div>
-      <button className={`w-10 h-5 flex items-center rounded-full bg-base-200 border-base-300/20 border-2 transition-all duration-300 absolute right-2 lg:relative`} onClick={toggleTheme}>
-          <div className={`flex flex-col absolute items-center justify-center w-5 h-5 rounded-full shadow-black/30 shadow transition-all duration-300 ${theme === "halloween" ?"text-purple-600 bg-white left-0" : "text-primary bg-blue-400 right-0" } `}>{
-            theme === "halloween" ?(<FaMoon/>) :(<FaSun/>)
-          }</div>
-        </button>
     </div>
   );
 };

@@ -4,36 +4,54 @@ import { FaUsers } from "react-icons/fa";
 import { BsFillTruckFrontFill } from "react-icons/bs";
 import { FaList } from "react-icons/fa";
 
-
-
 export const sidebarNav = [
   {
+
     title: "items",
     icon: FaList,
-    path: "/admin",
+    id:"items",
+    subItems: [
+      { label: "All items", path: "/admin" },
+      { label: "Add Items", path: "items/create" },
+    ],
   },
   {
     title: "category",
     icon: MdCategory,
-    path: "category",
+    id:"category",
+    subItems: [
+      { label: "All category", path: "category" },
+      { label: "Add category", path: "category/create" },
+    ],
   },
   {
     title: "UOM",
     icon: FaScaleBalanced,
-    path: "uom",
+    id:"uom",
+    subItems: [
+      { label: "All units", path: "uom" },
+      { label: "Add unit", path: "uom/create" },
+    ],
   },
   {
     title: "users",
     icon: FaUsers,
-    path: "users",
+   id:"users",
+    subItems: [
+      { label: "All users", path: "users" },
+      { label: "Add users", path: "users/create" },
+    ],
   },
   {
-    title: "vehicle",
+    title: "vehicles",
     icon: BsFillTruckFrontFill,
-    path: "vehicles",
+    id:"vehicle",
+    subItems: [
+      { label: "All vehicle", path: "vehicles" },
+      { label: "Add vehicle", path: "vehicles/create" },
+    ],
   },
 ];
-
 
 export const sidebarNav2 = [
   {
@@ -41,9 +59,9 @@ export const sidebarNav2 = [
     icon: BsFillTruckFrontFill,
     path: "settings",
   },
-   {
+  {
     title: "vehicle",
     icon: BsFillTruckFrontFill,
     path: "vehicles",
   },
-]
+];

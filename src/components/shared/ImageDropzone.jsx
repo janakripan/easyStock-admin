@@ -68,7 +68,7 @@ const ImageDropzone = ({ name }) => {
       <div
         {...getRootProps()}
         className={`w-full min-h-[180px] p-4 border-2 border-dashed flex items-center justify-center rounded-md cursor-pointer ${
-          field.value ? "border-gray-300" : "border-text/40"
+          field.value ? "border-gray-500" : "border-gray-700"
         }`}
       >
         <input {...getInputProps()} />
