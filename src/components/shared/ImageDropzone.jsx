@@ -1,6 +1,7 @@
 import { useDropzone } from "react-dropzone";
 import { useField, useFormikContext } from "formik";
 import { useEffect, useState } from "react";
+import { IoIosCloseCircle } from "react-icons/io";
 
 const ImageDropzone = ({ name }) => {
   const { setFieldValue } = useFormikContext();
@@ -61,6 +62,12 @@ const ImageDropzone = ({ name }) => {
     };
   }, []);
 
+  const handleRemoveImage = () => {
+    if (field.value) {
+      URL.revokeObjectURL(field.value); // cleanup
+      setFieldValue(name, null);
+    }
+  };
 
   return (
     <>
@@ -73,13 +80,24 @@ const ImageDropzone = ({ name }) => {
       >
         <input {...getInputProps()} />
         {field.value ? (
-          <div className="text-center text-sm text-gray-700">
+          <div className="text-center text-sm text-gray-700 border border-gray-100 p-1 relative">
             <img
               src={URL.createObjectURL(field.value)}
               alt="preview"
               className="w-24 h-24 object-cover mx-auto mb-2 rounded"
             />
             <p>{field.value.name}</p>
+             <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation(); // prevent triggering file input
+                handleRemoveImage();
+              }}
+              className="absolute top-0 right-0 mt-1 mr-1  text-red-500 hover:text-red-700"
+              title="Remove image"
+            >
+              <IoIosCloseCircle size={18} />
+            </button>
           </div>
         ) : (
           <p className="text-center text-sm text-gray-500">

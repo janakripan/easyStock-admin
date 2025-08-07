@@ -23,7 +23,7 @@ const AddItemsPage = () => {
          
           
           {/* container */}
-          <div className="w-full h-full bg-white rounded-xl overflow-hidden flex flex-col   ">
+          <div className="w-full h-full bg-white rounded-xl overflow-hidden overflow-y-scroll hide-scrollbar flex flex-col   ">
            
               <AddItemsForm/>
            

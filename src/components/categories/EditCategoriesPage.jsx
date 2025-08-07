@@ -25,7 +25,7 @@ const EditCategoriesPage = () => {
          
           
           {/* container */}
-          <div className="w-full h-full bg-white rounded-xl overflow-hidden flex flex-col   ">
+          <div className="w-full h-full bg-white rounded-xl overflow-hidden flex flex-col overflow-y-scroll hide-scrollbar   ">
            
               <EditCategoriesForm initialData={initialData}/>
            
