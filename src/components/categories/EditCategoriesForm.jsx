@@ -5,7 +5,7 @@ import ImageDropzone from "../shared/ImageDropzone";
 
 const EditCategoriesForm = ({initialData}) => {
   const initialValues = {
-    name:initialData.name || "",
+    name:initialData?.name || "",
     image: null,
   };
 

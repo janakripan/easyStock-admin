@@ -10,7 +10,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="flex lg:w-[450px] items-center gap-2 w-full max-w-xl border border-gray-500 rounded-lg p-1 px-2">
+    <div className="flex md:w-[350px] lg:w-[450px] items-center gap-2 w-full max-w-xl border border-gray-500 rounded-lg p-1 px-2">
       <div className="w-full relative">
         <input
           type="text"

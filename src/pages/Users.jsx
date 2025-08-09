@@ -4,9 +4,60 @@ import { MdAdd } from "react-icons/md";
 import SearchBar from "../components/shared/Searchbar";
 import { useNavigate } from "react-router";
 import UsersTable from '../components/users/UsersTable'
+import ExcelJS from "exceljs";
+import { saveAs } from "file-saver";
+import { mockUsers } from "../constants/mockdata";
+import { FiDownload } from "react-icons/fi";
+
 
 const Users = () => {
    const navigate = useNavigate()
+
+   //download data
+  const handleDownloadExcel = async () => {
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet("users");
+
+    //  headers
+    worksheet.columns = [
+      { header: "User ID", key: "usercode", width: 10 },
+      { header: "User Name", key: "name", width: 50 },
+      { header: "Default Customer", key: "customer", width: 10 },
+      { header: "Categories", key: "categories", width: 20 },
+    ];
+
+    mockUsers.forEach((item) => {
+      const flattened = {};
+
+      Object.entries(item).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          flattened[key] = value.join(", ");
+        } else {
+          flattened[key] = value;
+        }
+      });
+
+      worksheet.addRow(flattened);
+    });
+
+    worksheet.getRow(1).eachCell((cell) => {
+      cell.font = { bold: true };
+      cell.fill = {
+        type: "pattern",
+        pattern: "solid",
+        fgColor: { argb: "FFCCE5FF" },
+      };
+    });
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    const blob = new Blob([buffer], {
+      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    });
+    const today = new Date();
+    const formattedDate = today.toISOString().split("T")[0];
+    saveAs(blob, `user-data-${formattedDate}.xlsx`);
+  };
+
 
   return (
     <>
@@ -22,11 +73,11 @@ const Users = () => {
           
 
           <div className="w-full h-full bg-white rounded-xl overflow-hidden flex flex-col p-4 lg:p-6  ">
-            <div className="w-full h-fit flex justify-between items-center py-6 ">
+            <div className="w-full h-fit flex justify-between items-center py-6 gap-5">
 
               <SearchBar/>
 
-              <div>
+              <div className="flex flex-row items-center justify-between gap-x-5">
                 <button
                 onClick={()=>navigate(`/admin/users/create`)}
                  className="hidden md:flex flex-row  items-center gap-1 px-8 py-3 rounded-lg text-gray-900 border border-gray-300 hover:text-white hover:bg-primary hover:border-primary transition-all duration-300 font-roboto font-medium ">
@@ -38,6 +89,12 @@ const Users = () => {
                     Add user
                   </span>
 
+                </button>
+
+                <button 
+                onClick={()=>handleDownloadExcel()}
+                className=" px-4 bg-gray-900 py-3 rounded-lg  border border-gray-300 text-white hover:bg-primary hover:border-primary transition-all duration-300 font-roboto font-medium " >
+                  <FiDownload/>
                 </button>
               </div>
 

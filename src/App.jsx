@@ -19,7 +19,7 @@ function App() {
   const Settings = lazy(() => import("./pages/Settings"));
   const AddUomPage = lazy(() => import("./components/uom/AddUomPage"));
   const EditUomPage = lazy(() => import("./components/uom/EditUomPage"));
-  const EditUsersPage = lazy(() => import("./components/categories/EditCategoriesPage"));
+  const EditUsersPage = lazy(() => import("./components/users/EditUsersPage"));
   const AddUsersPage = lazy(() => import("./components/users/AddUsersPage"));
   const EditVehiclesPage = lazy(() => import("./components/vehicles/EditVehiclesPage"));
   const AddVehiclesPage = lazy(() => import("./components/vehicles/AddVehiclesPage"));
